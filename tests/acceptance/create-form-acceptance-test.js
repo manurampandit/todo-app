@@ -1,8 +1,8 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, click, fillIn, findAll } from '@ember/test-helpers';
+import { visit, click, fillIn, findAll } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
-
+import createTodo from '../pages/create-todo';
 module('Acceptance | create form acceptance', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
@@ -14,6 +14,20 @@ module('Acceptance | create form acceptance', function(hooks) {
     await fillIn('#todo-name', 'Test');
     await fillIn('#todo-description', 'Test description');
     await click('.btn-primary');
+
+    assert.equal(findAll('.todo-item').length, 11, 'Contains newly created item');
+    // assert.ok(document.querySelectorAll('.todo-item')[10].textContent.includes('Test'), 'recently added item contains the same title ')
+  });
+  test('visiting via pageObject', async function(assert) {
+    this.server.createList('todo', 10);
+
+    await createTodo
+      .visitMainPage()
+      .clickCreateTab()
+      .fillNameField("Test")
+      .fillDescriptionField("Description")
+      .clickSubmitButton();
+
 
     assert.equal(findAll('.todo-item').length, 11, 'Contains newly created item');
     // assert.ok(document.querySelectorAll('.todo-item')[10].textContent.includes('Test'), 'recently added item contains the same title ')
