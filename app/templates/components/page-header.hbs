@@ -6,10 +6,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        {{#link-to "index.main" class="nav-link"}}Home <span class="sr-only">(current)</span>{{/link-to}}
+      <li class="nav-item active" data-test-id="home-first-tab">
+        {{#link-to "index.main" class="nav-link" }}Home <span class="sr-only">(current)</span>{{/link-to}}
       </li>
-      <li class="nav-item">
+      <li class="nav-item" data-test-id="home-second-tab">
         {{#link-to "index.create" class="nav-link"}}Create {{/link-to}}
       </li>
     </ul>

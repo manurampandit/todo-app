@@ -1,9 +1,12 @@
 <div class="card">
   <div class="card-header">
     {{todo.name}}
+    <a class="float-right" data-test-id="toggle-btn" href="#" {{action "toggleState"}}>{{buttonText}}</a>
   </div>
-  <div class="card-body">
-    {{todo.description}}
-  </div>
+  {{#if showDescription}}
+    <div class="card-body">
+      {{todo.description}}
+    </div>
+  {{/if}}
 </div>
 {{yield}}
