@@ -1,7 +1,8 @@
 # todo
 
 This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This app is constructed for displaying testing patterns for a meetup.
+
 
 ## Prerequisites
 
@@ -14,7 +15,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/manurampandit/todo-app.git` this repository
 * `cd todo`
 * `npm install`
 
