@@ -7,20 +7,17 @@ module('Integration | Component | todo-item', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+    this.todo = {
+      name: 'My TODO',
+      description: 'Some random description for my todo component',
+    }
+    await render(hbs`{{todo-item todo=todo}}`);
+    // await this.pauseTest();
 
-    await render(hbs`{{todo-item}}`);
+    assert.dom('.card-header').exists();
+    assert.dom('.card-body').exists();
+    assert.dom('.card-header').hasText(this.todo.name);
+    assert.dom('.card-body').hasText(this.todo.description);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#todo-item}}
-        template block text
-      {{/todo-item}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });
