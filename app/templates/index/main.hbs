@@ -1,0 +1,8 @@
+{{#each model as |todo|}}
+  <section class="todo-item">
+    {{#if todo.id}}
+      {{todo-item todo=todo}}
+    {{/if}}
+  </section>
+{{/each}}
+{{outlet}}
