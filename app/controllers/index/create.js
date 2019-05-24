@@ -7,6 +7,7 @@ export default Controller.extend({
         .save()
         .then(() => {
           Ember.Logger.info("todo created succeessfully");
+          this.transitionToRoute('index.main');
         })
         .catch((ex) => {
           Ember.Logger.error("Some error in creation", ex);

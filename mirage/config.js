@@ -5,6 +5,8 @@ export default function() {
 
   this.post("todos", (schema, { requestBody }) => {
     requestBody = JSON.parse(requestBody);
-    return schema.db.todos.insert(requestBody);
+    let obj = schema.db.todos.insert(requestBody);
+    obj.data.id = obj.id;
+    return obj;
   });
 }
